@@ -6,15 +6,16 @@ GET  /suggestions - Will list some sample suggestions.
 POST /suggestions - Will add the item in the list.
 
 # Getting Started
-run the maven build
+- Docker build 
 
-mvn clean install
+1. docker build -t spring/autocomplete .
+2. docker run -p 8080:8080 spring/autocomplete
+3. verify - curl -X GET "http://localhost:8080/suggestions"
 
-then run the AutocompleteApplication in IDE.
+ - in local with JAVA installed
 
-or run via
-
-%CLASSPATH%\java -jar autocomplete-0.0.1-SNAPSHOT.jar
+    1. run the maven build - mvn clean install
+    2. %CLASSPATH%\java -jar autocomplete-0.0.1-SNAPSHOT.jar
 
 Note: set your classpath via
 
