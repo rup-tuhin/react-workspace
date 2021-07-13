@@ -8,8 +8,8 @@ POST /suggestions - Will add the item in the list.
 # Getting Started
 - Docker build 
 
-1. docker build -t spring/autocomplete .
-2. docker run -p 8080:8080 spring/autocomplete
+1. docker build -t spring/autocomplete:1.0 .
+2. docker run -p 8080:8080 spring/autocomplete:1.0
 3. verify - curl -X GET "http://localhost:8080/suggestions"
 
  - in local with JAVA installed
