@@ -4,6 +4,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+ - Docker container
+1. docker build -t react/autocomplete:1.0 .
+2. docker run -p 3000:3000 react/autocomplete:1.0
+3. http://localhost:3000/
+
 In the project directory, you can run:
 
 ### `npm start`
