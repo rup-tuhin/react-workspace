@@ -1,6 +1,9 @@
 package com.example.demo;
 
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -15,15 +18,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(SuggestionController.class)
+@TestMethodOrder(OrderAnnotation.class)
 class SuggestionControllerIntTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
+    @Order(1)
     void listSuggestions() throws Exception {
         mockMvc.perform(get("/suggestions")
-                        .contentType(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -32,11 +37,12 @@ class SuggestionControllerIntTest {
     }
 
     @Test
+    @Order(2)
     void addSuggestions() throws Exception {
         mockMvc.perform(post("/suggestions")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("test")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("test")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated());
     }
 }
